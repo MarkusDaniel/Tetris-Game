@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://3uewdt1mx403"]
+
+[ext_resource type="Script" path="res://scripts/t_domino.gd" id="1_lq1m3"]
+
+[node name="TDomino" type="Node2D"]
+script = ExtResource("1_lq1m3")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

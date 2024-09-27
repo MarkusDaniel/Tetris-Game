@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bvfkrbv5pknko"]
+
+[ext_resource type="Texture2D" uid="uid://cfcuoscbtvpw7" path="res://assets/Red.png" id="1_18fft"]
+[ext_resource type="Script" path="res://scripts/domino_data.gd" id="2_x45um"]
+
+[resource]
+script = ExtResource("2_x45um")
+domino_texture = ExtResource("1_18fft")
+tdomino_type = 2
+spawn_position = Vector2(-24, -456)

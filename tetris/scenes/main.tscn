@@ -1,0 +1,90 @@
+[gd_scene load_steps=11 format=3 uid="uid://ci1nnmat7prbv"]
+
+[ext_resource type="Texture2D" uid="uid://d0gdxuu7c0scw" path="res://assets/Border.png" id="1_0hf1e"]
+[ext_resource type="Texture2D" uid="uid://bar5ueosk5dhk" path="res://assets/Grid.png" id="2_uhjuk"]
+[ext_resource type="Script" path="res://scripts/score.gd" id="3_5ghf0"]
+[ext_resource type="Script" path="res://scripts/domino_spawner.gd" id="3_apqsg"]
+[ext_resource type="Script" path="res://table.gd" id="4_sk40w"]
+[ext_resource type="PackedScene" uid="uid://3uewdt1mx403" path="res://scenes/t_domino.tscn" id="5_as8m2"]
+[ext_resource type="AudioStream" uid="uid://ifm626iydpg7" path="res://music/power-up-type-1-230548.mp3" id="5_x5756"]
+[ext_resource type="PackedScene" uid="uid://btbxg7oohnig0" path="res://scenes/ui.tscn" id="6_l3u5q"]
+
+[sub_resource type="Gradient" id="Gradient_0str1"]
+offsets = PackedFloat32Array(0, 0.991304, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.947826, 0.947826, 0.947826, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_43vic"]
+gradient = SubResource("Gradient_0str1")
+
+[node name="Main" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -64)
+zoom = Vector2(0.55, 0.55)
+
+[node name="Border" type="TextureRect" parent="."]
+offset_left = -256.0
+offset_top = -496.0
+offset_right = 1794.0
+offset_bottom = 3474.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_0hf1e")
+
+[node name="Gred_tex" type="TextureRect" parent="Border"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -961.0
+offset_top = -1921.0
+offset_right = 959.0
+offset_bottom = 1928.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_uhjuk")
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="Border"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = -576.0
+offset_right = 493.0
+offset_bottom = -553.0
+scale = Vector2(11.9875, 12.0951)
+theme_override_colors/font_color = Color(0.576471, 0.439216, 0.356863, 1)
+theme_override_colors/font_shadow_color = Color(0.356863, 0.14902, 0.027451, 1)
+theme_override_colors/font_outline_color = Color(0.486275, 0.243137, 0.0666667, 1)
+text = "Medivel Tetris"
+
+[node name="Score" type="Label" parent="Border"]
+layout_mode = 0
+offset_left = 736.0
+offset_top = -288.0
+offset_right = 784.0
+offset_bottom = -265.0
+scale = Vector2(10.6635, 9.89423)
+script = ExtResource("3_5ghf0")
+
+[node name="Table" type="Node" parent="."]
+script = ExtResource("4_sk40w")
+t_domino_scene = ExtResource("5_as8m2")
+
+[node name="Score_Sound" type="AudioStreamPlayer2D" parent="Table"]
+stream = ExtResource("5_x5756")
+
+[node name="Domino_spawner" type="Node" parent="."]
+script = ExtResource("3_apqsg")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+rotation = 3.13614
+scale = Vector2(-0.128883, 28.9094)
+color = Color(0.92, 0.74336, 0.5888, 1)
+energy = 2.26
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.937255)
+texture = SubResource("GradientTexture1D_43vic")
+texture_scale = 35.26
+
+[node name="UI" parent="." instance=ExtResource("6_l3u5q")]

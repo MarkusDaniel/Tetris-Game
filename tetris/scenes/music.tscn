@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfotevyorgasf"]
+
+[ext_resource type="AudioStream" uid="uid://bv6sy5cqjcd7a" path="res://music/Tetris Theme (Medieval Style).wav" id="1_36eei"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_36eei")
+volume_db = -23.516
+autoplay = true
